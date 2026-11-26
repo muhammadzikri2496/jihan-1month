@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Untuk Jihan kesayangan jikri</title>
+  <meta property="og:title" content="Untuk Jihan kesayangan jikri ♥" />
+  <meta property="og:description" content="5 menit spesial buat ngerayain 1 bulan pertama kita. Nyalakan suara HP kamu ya ✨" />
+  <meta property="og:image" content="foto1.jpg" />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg-top: #1d1136;
+      --bg-bot: #060710;
+      --card: rgba(255, 255, 255, 0.055);
+      --border: rgba(244, 114, 182, 0.28);
+      --pink: #f472b6;
+      --pink-soft: #fbcfe8;
+      --violet: #8b5cf6;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(circle at 50% 0%, var(--bg-top) 0%, var(--bg-bot) 60%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      transition: background 1.5s ease;
+    }
+    body.warm-mode {
+      --bg-top: #3b1236;
+      --bg-bot: #0f0512;
+      --border: rgba(251, 113, 133, 0.48);
+    }
+    #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .hidden { display: none !important; }
+
+    /* TIRAI PEMBUKA */
+    .curtain {
+      position: fixed; inset: 0; z-index: 999;
+      background: radial-gradient(circle at center, #21133d 0%, #05060c 85%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; text-align: center;
+    }
+    .eyebrow { display: block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 10px; }
+    .curtain-title { font-family: Georgia, serif; font-size: 34px; color: #fff; margin-bottom: 12px; line-height: 1.25; }
+    .curtain-sub { font-size: 14px; color: var(--muted); max-width: 290px; margin: 0 auto 28px; line-height: 1.65; }
+    .primary-btn {
+      padding: 16px 34px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      color: #fff; font-weight: 700; font-size: 15px; cursor: pointer;
+      box-shadow: 0 12px 32px rgba(236, 72, 153, 0.45);
+    }
+
+    /* VINYL BAR + LIRIK */
+    .vinyl-bar {
+      position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 24px); max-width: 480px; z-index: 80;
+      background: rgba(12, 15, 29, 0.88);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      border-radius: 999px; padding: 8px 14px;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+    }
+    .vinyl-disc {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: conic-gradient(#111 0deg, #333 90deg, #111 180deg, #333 270deg, #111 360deg);
+      border: 2px solid var(--pink);
+      display: flex; align-items: center; justify-content: center;
+      animation: spinDisc 4s linear infinite;
+    }
+    .vinyl-disc::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--pink-soft); }
+    .vinyl-disc.paused { animation-play-state: paused; }
+    @keyframes spinDisc { to { transform: rotate(360deg); } }
+    .track-info { flex: 1; min-width: 0; }
+    .track-title { font-size: 11.5px; font-weight: 700; color: var(--pink-soft); white-space: normal; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .track-prog-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.12); border-radius: 4px; margin-top: 4px; overflow: hidden; }
+    .track-prog-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #ec4899, #8b5cf6); transition: width 0.4s linear; }
+    .track-time { font-size: 10px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    /* EASTER EGG MODAL */
+    .secret-modal {
+      position: fixed; inset: 0; z-index: 900;
+      background: rgba(5, 6, 15, 0.85); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center; padding: 24px;
+    }
+    .secret-card {
+      background: linear-gradient(145deg, #27133a, #111827);
+      border: 1px solid var(--pink); border-radius: 24px;
+      padding: 26px 22px; max-width: 340px; text-align: center;
+      box-shadow: 0 20px 50px rgba(236, 72, 153, 0.35);
+    }
+    .secret-card h4 { font-family: Georgia, serif; font-size: 20px; color: var(--pink-soft); margin-bottom: 10px; }
+    .secret-card p { font-size: 14px; line-height: 1.65; color: #e2e8f0; margin-bottom: 18px; }
+
+    /* LAYOUT BABAK */
+    main { position: relative; z-index: 2; padding-top: 48px; }
+    .act {
+      padding: 82px 20px; max-width: 500px; margin: 0 auto;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .act-full { min-height: 92vh; }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    .section-head { text-align: center; margin-bottom: 26px; }
+    .step-tag { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--pink); margin-bottom: 8px; }
+    .section-head h2 { font-family: Georgia, serif; font-size: 27px; line-height: 1.25; }
+    .sub-hint { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+    /* HERO & COUNTER */
+    .act-hero { text-align: center; }
+    .pill-badge {
+      display: inline-block; padding: 6px 14px; border-radius: 999px;
+      background: rgba(244, 114, 182, 0.14); border: 1px solid var(--border);
+      color: var(--pink-soft); font-size: 11px; font-weight: 700; letter-spacing: 1.3px; margin-bottom: 18px;
+    }
+    .hero-title { font-family: Georgia, serif; font-size: 32px; line-height: 1.28; margin-bottom: 16px; }
+    .hero-title span { color: var(--pink); cursor: pointer; }
+    .hero-desc { font-size: 15px; line-height: 1.75; color: #cbd5e1; margin-bottom: 28px; }
+    .counter-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 22px; padding: 20px 14px; margin-bottom: 28px;
+    }
+    .counter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .c-item { background: rgba(10, 14, 28, 0.8); border-radius: 14px; padding: 12px 4px; }
+    .c-item strong { display: block; font-size: 21px; color: var(--pink); }
+    .c-item span { font-size: 11px; color: var(--muted); }
+    .scroll-cue { font-size: 12px; color: var(--muted); }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; gap: 16px; }
+    .t-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.09);
+      border-left: 3px solid var(--pink); border-radius: 18px; padding: 20px;
+    }
+    .t-num { font-size: 11px; font-weight: 700; color: var(--pink); letter-spacing: 1.5px; }
+    .t-card h3 { font-size: 17px; margin: 6px 0 8px; color: #fff; }
+    .t-card p { font-size: 14px; line-height: 1.75; color: #cbd5e1; }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  <audio id="bgm" src="kangen.mp3" loop preload="auto"></audio>
+
+  <div id="curtain" class="curtain">
+    <div>
+      <span class="eyebrow">5-Minute Special Edition</span>
+      <h1 class="curtain-title">Untuk Jihan kesayangan jikri</h1>
+      <p class="curtain-sub">Nyalakan suara HP kamu, siapkan waktu sekitar 5 menit, dan scroll pelan-pelan bareng lagunya ya.</p>
+      <button type="button" class="primary-btn" onclick="enterStory()">Putar Lagu & Masuk ✦</button>
+    </div>
+  </div>
+
+  <!-- EASTER EGG POPUP -->
+  <div id="secret-modal" class="secret-modal hidden" onclick="this.classList.add('hidden')">
+    <div class="secret-card" onclick="event.stopPropagation()">
+      <h4>🔓 Catatan Rahasia Terbuka!</h4>
+      <p>Wah ketemu easter egg-nya! Cuma mau bilang: dari sekian banyak orang yang aku kenal, kamu tetap jadi favorit nomor satu aku setiap hari. ♥</p>
+      <button type="button" class="primary-btn" style="padding:10px 24px;font-size:13px;" onclick="document.getElementById('secret-modal').classList.add('hidden')">Simpan Rahasia ✨</button>
+    </div>
+  </div>
+
+  <div id="shooting-star" class="shooting-star" onclick="openWishModal()">🌠 Tap Bintang Jatuh!</div>
+
+  <div id="wish-modal" class="secret-modal hidden" onclick="this.classList.add('hidden')">
+    <div class="secret-card" onclick="event.stopPropagation()">
+      <h4>🌠 Make a Wish (Bulan Ke-2)</h4>
+      <p>Kamu berhasil nangkep bintang jatuhnya! Tulis 1 harapan atau keinginan kamu buat kita di bulan ke-2:</p>
+      <input id="wish-input" class="wa-input" type="text" placeholder="Contoh: Makin sering jalan bareng..." style="margin-bottom:12px;" />
+      <button type="button" class="primary-btn" style="padding:10px 24px;font-size:13px;width:100%;" onclick="saveWish()">Simpan Harapan ✨</button>
+    </div>
+  </div>
+
+  <div id="vinyl-bar" class="vinyl-bar hidden" onclick="toggleMusic()">
+    <div id="vinyl-disc" class="vinyl-disc"></div>
+    <div class="track-info">
+      <div class="track-title" id="track-title">♪ Kangen — Dewa 19</div>
+      <div class="track-prog-bg"><div class="track-prog-fill" id="prog-fill"></div></div>
+    </div>
+    <div class="track-time" id="track-time">00:00</div>
+  </div>
+
+  <main id="main-content" class="hidden">
+    <section class="act act-full act-hero">
+      <div class="pill-badge">BABAK I • 1ST MONTHVERSARY</div>
+      <h1 class="hero-title">30 Hari Pertama Bareng <span onclick="tapSecret()">Jihan kesayangan jikri</span></h1>
+      <p class="hero-desc">Lagu ini berdurasi lima menit—pas banget buat nemenin kamu baca pelan-pelan semua cerita kecil yang aku rangkum di sini.</p>
+      <div class="counter-card">
+        <div class="counter-grid">
+          <div class="c-item"><strong id="d">31</strong><span>Hari</span></div>
+          <div class="c-item"><strong id="h">00</strong><span>Jam</span></div>
+          <div class="c-item"><strong id="m">00</strong><span>Menit</span></div>
+          <div class="c-item"><strong id="s">00</strong><span>Detik</span></div>
+        </div>
+      </div>
+      <div class="scroll-cue">↓ Scroll pelan-pelan ke bawah ↓</div>
+    </section>
+
+    <section class="act">
+      <div class="section-head reveal">
+        <span class="step-tag">BABAK II — KILAS BALIK</span>
+        <h2>Lima Fase di Bulan Pertama</h2>
+        <p class="sub-hint">Setiap bagian punya ceritanya masing-masing.</p>
+      </div>
+      <div class="timeline">
+        <div class="t-card reveal">
+          <span class="t-num">FASE 01 • TITIK AWAL</span>
+          <h3>Dari Sapaan Biasa Jadi Ditunggu</h3>
+          <p>Awalnya gak pernah nyangka kalau obrolan sederhana kita bakal sejauh ini. Dari sekadar saling tanya kabar, lama-lama notifikasi dari kamu selalu jadi hal pertama yang aku cari setiap buka HP.</p>
+        </div>
+        <div class="t-card reveal">
+          <span class="t-num">FASE 02 • MULAI NYAMBUNG</span>
+          <h3>Obrolan Random yang Gak Pernah Habis</h3>
+          <p>Entah bahas hal penting sampai bercandaan paling receh sekalipun, ngobrol sama kamu gak pernah kerasa garing. Waktu sering banget tiba-tiba udah malam padahal rasanya baru mulai cerita.</p>
+        </div>
+        <div class="t-card reveal">
+          <span class="t-num">FASE 03 • RASA NYAMAN</span>
+          <h3>Jadi Tempat Pulang Paling Tenang</h3>
+          <p>Di tengah capeknya aktivitas seharian, denger cerita kamu atau sekadar tukar kabar singkat selalu berhasil balikin mood. Kamu punya cara sendiri bikin suasana jadi adem.</p>
+        </div>
+        <div class="t-card reveal">
+          <span class="t-num">FASE 04 • RINDU YANG SERING MUNCUL</span>
+          <h3>Selalu Ada Alasan Buat Kangen</h3>
+          <p>Sama persis kayak lagu yang lagi muter sekarang—rasanya selalu pengen ketemu, pengen denger suara kamu, dan pengen mastiin hari kamu berjalan baik-baik aja.</p>
+        </div>
+        <div class="t-card reveal">
+          <span class="t-num">FASE 05 • GENAP 1 BULAN</span>
+          <h3>Halaman Pertama yang Berhasil Kita Tulis</h3>
+          <p>Hari ini genap 1 bulan kita jalan bareng. Mungkin masih terhitung baru, tapi buat aku satu bulan ini udah cukup buat nunjukin betapa berharganya kehadiran kamu.</p>
+        </div>
+      </div>
+    </section>
+    <style>
+      .carousel-stage {
+        height: 310px; perspective: 950px;
+        display: flex; align-items: center; justify-content: center;
+        touch-action: pan-y; cursor: grab;
+      }
+      .carousel-ring { position: relative; width: 165px; height: 225px; transform-style: preserve-3d; }
+      .carousel-card {
+        position: absolute; inset: 0;
+        transform: rotateY(calc(var(--i) * 90deg)) translateZ(175px);
+        transform-style: preserve-3d; cursor: pointer;
+      }
+      .card-inner {
+        position: relative; width: 100%; height: 100%;
+        transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .carousel-card.flipped .card-inner { transform: rotateY(180deg); }
+      .card-face {
+        position: absolute; inset: 0; border-radius: 18px; overflow: hidden;
+        backface-visibility: hidden; -webkit-backface-visibility: hidden;
+        border: 1px solid rgba(244, 114, 182, 0.42);
+        background: linear-gradient(145deg, #1f1435, #0f172a);
+        display: flex; flex-direction: column;
+      }
+      .card-back {
+        transform: rotateY(180deg); padding: 16px 12px;
+        align-items: center; justify-content: center; text-align: center;
+        background: linear-gradient(145deg, #2b143b, #111827);
+      }
+      .card-back h4 { font-size: 13px; color: var(--pink); margin-bottom: 8px; }
+      .card-back p { font-size: 11.5px; line-height: 1.55; color: #e2e8f0; }
+      .carousel-card img { width: 100%; height: 100%; object-fit: cover; }
+      .fallback-art { flex: 1; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px; }
+      .card-caption {
+        position: absolute; bottom: 0; left: 0; right: 0; padding: 8px;
+        background: linear-gradient(to top, rgba(5, 6, 15, 0.94), transparent);
+        font-size: 11.5px; font-weight: 600; text-align: center; color: var(--pink-soft);
+      }
+      .reasons-list { display: flex; flex-direction: column; gap: 10px; }
+      .reason-item {
+        background: var(--card); border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 16px; padding: 15px 16px; cursor: pointer;
+      }
+      .reason-item.opened { border-color: var(--pink); background: rgba(244, 114, 182, 0.08); }
+      .reason-top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 600; }
+      .reason-top span { color: var(--pink); font-size: 12px; }
+      .reason-body { display: none; margin-top: 10px; font-size: 13.5px; line-height: 1.65; color: #cbd5e1; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; }
+      .reason-item.opened .reason-body { display: block; }
+      .quiz-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 18px; margin-bottom: 14px; }
+      .quiz-q { font-size: 14.5px; font-weight: 600; margin-bottom: 12px; line-height: 1.5; }
+      .quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .q-btn {
+        padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(15, 23, 42, 0.75); color: #fff; font-size: 12.5px; cursor: pointer;
+      }
+      .q-btn.picked { border-color: var(--pink); background: rgba(236, 72, 153, 0.22); }
+      .quiz-reply { margin-top: 10px; font-size: 13px; color: var(--pink-soft); line-height: 1.5; display: none; }
+
+      /* VOUCHER KLAIM */
+      .voucher-grid { display: flex; flex-direction: column; gap: 12px; }
+      .v-card {
+        position: relative; background: linear-gradient(135deg, rgba(236,72,153,0.14), rgba(139,92,246,0.14));
+        border: 1.5px dashed rgba(244, 114, 182, 0.5); border-radius: 18px;
+        padding: 18px; cursor: pointer; transition: all 0.35s ease;
+      }
+      .v-card.locked { opacity: 0.35; pointer-events: none; filter: grayscale(0.8); }
+      .v-card.claimed {
+        border-style: solid; border-color: #34d399;
+        background: linear-gradient(135deg, rgba(16,185,129,0.16), rgba(139,92,246,0.18));
+      }
+      .v-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+      .v-desc { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
+      .v-stamp {
+        display: none; margin-top: 10px; padding: 5px 10px; border-radius: 8px;
+        background: rgba(16, 185, 129, 0.2); border: 1px solid #34d399;
+        color: #6ee7b7; font-size: 11px; font-weight: 700; letter-spacing: 1px; width: fit-content;
+      }
+      .v-card.claimed .v-stamp { display: inline-block; }
+      .scratch-wrap {
+        position: relative; width: 100%; max-width: 340px; height: 185px;
+        margin: 0 auto; border-radius: 22px; overflow: hidden;
+        border: 1.5px solid rgba(244, 114, 182, 0.55);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+        touch-action: none; user-select: none; -webkit-user-select: none;
+      }
+      .scratch-secret {
+        position: absolute; inset: 0; padding: 18px;
+        background: radial-gradient(circle at top, #3b1442, #121629);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center;
+      }
+      .scratch-secret span { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #fbbf24; margin-bottom: 6px; }
+      .scratch-secret h4 { font-family: Georgia, serif; font-size: 18px; color: #fff; margin-bottom: 6px; }
+      .scratch-secret p { font-size: 12.5px; line-height: 1.5; color: #fbcfe8; }
+      #scratch-canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; transition: opacity 0.6s ease; }
+      .receipt-btn {
+        width: 100%; margin-top: 10px; padding: 14px; border-radius: 14px;
+        border: 1px solid rgba(244, 114, 182, 0.45);
+        background: rgba(255, 255, 255, 0.08); color: #fbcfe8;
+        font-weight: 700; font-size: 13.5px; cursor: pointer;
+      }
+      .receipt-btn:active { transform: scale(0.97); }
+      .receipt-note { margin-top: 8px; font-size: 12px; color: #6ee7b7; text-align: center; min-height: 16px; }
+      .shooting-star {
+        position: fixed; top: 18%; left: -160px; z-index: 85;
+        padding: 7px 14px; border-radius: 999px;
+        background: linear-gradient(90deg, rgba(251,191,36,0.18), rgba(244,114,182,0.9));
+        border: 1px solid #fde68a; color: #fff;
+        font-size: 11.5px; font-weight: 700; cursor: pointer;
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.7);
+        pointer-events: auto; opacity: 0;
+      }
+      @keyframes starGlide {
+        0% { transform: translate(0, 0) rotate(-6deg); opacity: 0; }
+        12% { opacity: 1; }
+        88% { opacity: 1; }
+        100% { transform: translate(calc(100vw + 320px), 130px) rotate(-6deg); opacity: 0; }
+      }
+      .shooting-star.fly { animation: starGlide 5.2s linear forwards; }
+      .ow-list { display: flex; flex-direction: column; gap: 12px; }
+      .ow-card {
+        background: linear-gradient(135deg, rgba(244,114,182,0.12), rgba(30,27,75,0.55));
+        border: 1px solid rgba(244,114,182,0.35); border-radius: 18px;
+        padding: 16px 18px; cursor: pointer; transition: all 0.3s ease;
+      }
+      .ow-card.open { border-color: #fbbf24; background: rgba(251,191,36,0.09); }
+      .ow-head { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; color: #fbcfe8; }
+      .ow-body { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.16); font-size: 13.5px; line-height: 1.65; color: #f1f5f9; }
+      .ow-card.open .ow-body { display: block; }
+    </style>
+
+    <section class="act">
+      <div class="section-head reveal">
+        <span class="step-tag">BABAK III — GALERI 3D INTERAKTIF</span>
+        <h2>Potongan Momen Kita</h2>
+        <p class="sub-hint">Geser kiri/kanan buat muter, lalu <b>ketuk kartunya</b> buat baca cerita di baliknya.</p>
+      </div>
+      <div class="carousel-stage reveal" id="carousel-stage">
+        <div class="carousel-ring" id="carousel-ring">
+          <div class="carousel-card" style="--i:0;" onclick="flipCard(this)">
+            <div class="card-inner">
+              <div class="card-face">
+                <img src="foto1.jpg" alt="1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="fallback-art"><span>✦</span><p>Momen #1</p></div>
+                <div class="card-caption">Awal Cerita (Tap)</div>
+              </div>
+              <div class="card-face card-back">
+                <h4>Catatan #01</h4>
+                <p>Di titik ini semuanya mulai kerasa beda. Makasih udah buka pintu buat kita saling kenal lebih dekat.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" style="--i:1;" onclick="flipCard(this)">
+            <div class="card-inner">
+              <div class="card-face">
+                <img src="foto2.jpg" alt="2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="fallback-art"><span>♥</span><p>Momen #2</p></div>
+                <div class="card-caption">Favorit Aku (Tap)</div>
+              </div>
+              <div class="card-face card-back">
+                <h4>Catatan #02</h4>
+                <p>Salah satu momen yang selalu bikin aku senyum tiap keinget. Sederhana tapi nempel terus di kepala.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" style="--i:2;" onclick="flipCard(this)">
+            <div class="card-inner">
+              <div class="card-face">
+                <img src="foto3.jpg" alt="3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="fallback-art"><span>★</span><p>Momen #3</p></div>
+                <div class="card-caption">Vibes Terbaik (Tap)</div>
+              </div>
+              <div class="card-face card-back">
+                <h4>Catatan #03</h4>
+                <p>Bareng kamu, hal biasa aja bisa berubah jadi cerita seru yang pengen diulang berkali-kali.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" style="--i:3;" onclick="flipCard(this)">
+            <div class="card-inner">
+              <div class="card-face">
+                <img src="foto4.jpg" alt="4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="fallback-art"><span>∞</span><p>Momen #4</p></div>
+                <div class="card-caption">1st Month (Tap)</div>
+              </div>
+              <div class="card-face card-back">
+                <h4>Catatan #04</h4>
+                <p>Genap 1 bulan! Semoga galeri ini terus penuh sama ribuan momen baru kita ke depannya.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="act">
+      <div class="section-head reveal">
+        <span class="step-tag">BABAK IV — HAL-HAL KECIL</span>
+        <h2>10 Hal Tentang Kamu yang Aku Suka</h2>
+        <p class="sub-hint">Ketuk satu per satu buat buka isinya.</p>
+      </div>
+      <div class="reasons-list reveal" id="reasons-list"></div>
+    </section>
+
+    <section class="act">
+      <div class="section-head reveal">
+        <span class="step-tag">BABAK V — MINI MEMORY CHECK</span>
+        <h2>Jawab Jujur Ya</h2>
+      </div>
+      <div class="quiz-box reveal">
+        <div class="quiz-q">1. Kalau lagi capek atau bad mood, paling enak ngapain bareng?</div>
+        <div class="quiz-opts">
+          <button type="button" class="q-btn" onclick="pickQuiz(this, 'q1', 'Noted! Kapan pun kamu butuh tempat cerita, aku selalu siap dengerin.')">Cerita panjang lebar</button>
+          <button type="button" class="q-btn" onclick="pickQuiz(this, 'q1', 'Gas! Cari jajan enak emang obat paling ampuh buat balikin mood.')">Jajan & jalan santai</button>
+        </div>
+        <div class="quiz-reply" id="q1"></div>
+      </div>
+      <div class="quiz-box reveal">
+        <div class="quiz-q">2. Menurut kamu, 1 bulan pertama kita ini kerasa gimana?</div>
+        <div class="quiz-opts">
+          <button type="button" class="q-btn" onclick="pickQuiz(this, 'q2', 'Sama! Tiba-tiba udah 1 bulan aja, padahal rasanya baru kemarin mulai.')">Cepat banget gak kerasa</button>
+          <button type="button" class="q-btn" onclick="pickQuiz(this, 'q2', 'Setuju banget, tiap minggunya selalu ada cerita baru yang berkesan.')">Seru & banyak ceritanya</button>
+        </div>
+        <div class="quiz-reply" id="q2"></div>
+      </div>
+    </section>
+
+    <section class="act">
+      <div class="section-head reveal">
+        <span class="step-tag">BABAK VI — HADIAH SPESIAL</span>
+        <h2>Pilih 1 Voucher Buat Kamu Klaim</h2>
+        <p class="sub-hint">Cuma bisa pilih satu ya, kalau udah diketuk langsung terkunci & bisa kamu tagih ke Zikri!</p>
+      </div>
+      <div class="voucher-grid reveal" id="voucher-grid">
+        <div class="v-card" onclick="claimVoucher(this, 'Voucher Jajan Favorit Sepuasnya')">
+          <div class="v-title">🧋 Voucher Jajan Favorit</div>
+          <div class="v-desc">Bebas pilih minuman atau makanan favorit kamu, Zikri yang traktir.</div>
+          <div class="v-stamp">✓ CLAIMED</div>
+        </div>
+        <div class="v-card" onclick="claimVoucher(this, 'Voucher Jalan Santai & Foto Bareng')">
+          <div class="v-title">📸 Voucher Jalan Santai & Foto</div>
+          <div class="v-desc">Keluar jalan santai sore-sore plus sesi foto bareng buat nambah galeri kita.</div>
+          <div class="v-stamp">✓ CLAIMED</div>
+        </div>
+        <div class="v-card" onclick="claimVoucher(this, 'Voucher Full Dengerin Cerita Kamu')">
+          <div class="v-title">🎧 Voucher Full Time Buat Kamu</div>
+          <div class="v-desc">Bebas telponan atau cerita panjang lebar kapan pun kamu lagi butuh teman ngobrol.</div>
+          <div class="v-stamp">✓ CLAIMED</div>
+        </div>
+      </div>
+    </section>
+    <section class="act">
+      <div class="section-head reveal">
+        <span class="step-tag">CAPSULE • OPEN WHEN...</span>
+        <h2>Amplop Darurat Buat Kamu</h2>
+        <p class="sub-hint">Simpan link web ini—buka amplop di bawah sesuai suasana hati kamu kapan aja.</p>
+      </div>
+      <div class="ow-list reveal">
+        <div class="ow-card" onclick="this.classList.toggle('open')">
+          <div class="ow-head"><span>✉️ Buka pas lagi capek atau bad mood</span><span>Buka ▾</span></div>
+          <div class="ow-body">Tarik napas dulu sebentar ya. Kamu udah hebat banget hari ini. Kalau butuh tempat cerita atau cuma pengen ditemenin diam-diam, langsung chat Zikri—aku selalu ada di pihak kamu.</div>
+        </div>
+        <div class="ow-card" onclick="this.classList.toggle('open')">
+          <div class="ow-head"><span>✉️ Buka pas lagi overthinking</span><span>Buka ▾</span></div>
+          <div class="ow-body">Jangan mikirin hal-hal yang belum tentu kejadian ya. Satu hal yang pasti: perasaan dan perhatian aku ke kamu gak berubah sedikit pun. Kita hadapin pelan-pelan bareng.</div>
+        </div>
+        <div class="ow-card" onclick="this.classList.toggle('open')">
+          <div class="ow-head"><span>✉️ Buka pas kangen Zikri tengah malam</span><span>Buka ▾</span></div>
+          <div class="ow-body">Kalau kamu buka amplop ini berarti aku juga lagi mikirin kamu. Pencet tombol kangen di bawah atau langsung spam chat aku sekarang juga! ♥</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="act">
+      <div class="section-head reveal">
+        <span class="step-tag">BONUS • KARTU GOSOK RAHASIA</span>
+        <h2>Gosok Layarnya Pakai Jari</h2>
+        <p class="sub-hint">Ada hadiah tambahan tersembunyi di balik lapisan ini.</p>
+      </div>
+      <div class="scratch-wrap reveal" id="scratch-wrap">
+        <div class="scratch-secret">
+          <span>✦ GOLDEN TICKET UNLOCKED ✦</span>
+          <h4>1x Permintaan Bebas</h4>
+          <p>Apa pun yang Jihan minta hari ini, Zikri kabulin tanpa tapi-tapian! Screenshot buat klaim ♥</p>
+        </div>
+        <canvas id="scratch-canvas"></canvas>
+      </div>
+    </section>
+
+    <style>
+      .lock-container { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 16px 0; }
+      .lock-instruction { font-size: 14px; color: #cbd5e1; margin-bottom: 22px; }
+      .hold-wrapper {
+        position: relative; width: 156px; height: 156px;
+        display: flex; align-items: center; justify-content: center;
+        user-select: none; -webkit-user-select: none; touch-action: none; cursor: pointer;
+      }
+      .progress-ring { position: absolute; inset: 0; transform: rotate(-90deg); pointer-events: none; }
+      .ring-bg { stroke: rgba(255, 255, 255, 0.12); }
+      .ring-fill { stroke: var(--pink); stroke-linecap: round; }
+      .hold-core {
+        width: 116px; height: 116px; border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #ec4899, #7c3aed);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        box-shadow: 0 0 28px rgba(236, 72, 153, 0.5);
+        pointer-events: none; transition: transform 0.15s ease;
+      }
+      .hold-wrapper.pressing .hold-core { transform: scale(0.92); }
+      .heart-icon { font-size: 32px; line-height: 1; }
+      .hold-core small { font-size: 11px; font-weight: 700; letter-spacing: 1px; margin-top: 4px; }
+      .final-letter {
+        background: rgba(255, 255, 255, 0.065);
+        border: 1px solid rgba(244, 114, 182, 0.45);
+        border-radius: 26px; padding: 28px 22px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      }
+      .letter-date { display: inline-block; font-size: 12px; font-weight: 600; color: var(--pink); margin-bottom: 8px; }
+      .final-letter h3 { font-family: Georgia, serif; font-size: 23px; margin-bottom: 14px; }
+      .final-letter p { font-size: 14.5px; line-height: 1.8; color: #e2e8f0; margin-bottom: 14px; min-height: 24px; }
+      .letter-sign { margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); text-align: right; }
+      .letter-sign span { display: block; font-size: 12px; color: var(--muted); }
+      .letter-sign strong { font-family: Georgia, serif; font-style: italic; font-size: 20px; color: var(--pink-soft); }
+      .kangen-box { margin-top: 22px; text-align: center; }
+      .kangen-btn {
+        width: 100%; padding: 14px; border-radius: 16px; border: 1px solid var(--pink);
+        background: rgba(236, 72, 153, 0.16); color: #fff; font-weight: 700; font-size: 14px; cursor: pointer;
+      }
+      .kangen-msg { margin-top: 8px; font-size: 13px; color: var(--pink-soft); min-height: 18px; }
+      .wa-box { margin-top: 22px; padding-top: 18px; border-top: 1px dashed rgba(255,255,255,0.18); }
+      .wa-label { font-size: 13px; color: #cbd5e1; margin-bottom: 8px; display: block; }
+      .wa-input {
+        width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(10, 14, 28, 0.85); color: #fff; padding: 12px;
+        font-family: inherit; font-size: 13.5px; resize: none; margin-bottom: 10px;
+      }
+      .wa-btn {
+        width: 100%; padding: 14px; border-radius: 14px; border: none;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: #fff; font-weight: 700; font-size: 14px; cursor: pointer;
+      }
+    </style>
+
+    <section class="act act-full">
+      <div class="section-head reveal">
+        <span class="step-tag">BABAK VII — PENUTUP</span>
+        <h2>Surat Utama Untukmu</h2>
+      </div>
+
+      <div id="lock-container" class="lock-container reveal">
+        <p class="lock-instruction" id="lock-status">Tekan & tahan tombol hati selama 3 detik</p>
+        <div class="hold-wrapper" id="hold-btn" oncontextmenu="return false;">
+          <svg class="progress-ring" width="156" height="156">
+            <circle class="ring-bg" stroke-width="6" fill="transparent" r="68" cx="78" cy="78" />
+            <circle id="ring-fill" class="ring-fill" stroke-width="6" fill="transparent" r="68" cx="78" cy="78" />
+          </svg>
+          <div class="hold-core">
+            <span class="heart-icon">♥</span>
+            <small id="hold-percent">TAHAN</small>
+          </div>
+        </div>
+      </div>
+
+      <article id="final-letter" class="final-letter hidden">
+        <span class="letter-date">Happy 1st Monthversary ✨</span>
+        <h3>Untuk Jihan kesayangan jikri,</h3>
+        <p id="type-p1"></p>
+        <p id="type-p2"></p>
+        <p id="type-p3"></p>
+        <div class="letter-sign">
+          <span>Dengan sepenuh hati,</span>
+          <strong>Zikri ♥</strong>
+        </div>
+        <div class="kangen-box">
+          <button type="button" class="kangen-btn" onclick="tapKangen()">Tap Kalau Lagi Kangen ♥ (<span id="kangen-count">0</span>)</button>
+          <div class="kangen-msg" id="kangen-msg"></div>
+        </div>
+        <div class="wa-box">
+          <label class="wa-label" for="wa-note">Tulis pesan balasan singkat buat Zikri:</label>
+          <textarea id="wa-note" class="wa-input" rows="3" placeholder="Ketik reaksi atau pesan kamu di sini..."></textarea>
+          <button type="button" class="wa-btn" onclick="sendToWA()">Kirim Balasan ke WhatsApp Zikri 💌</button>
+          <button type="button" class="receipt-btn" onclick="downloadReceipt()">Simpan Struk Kenangan 📸</button>
+          <div class="receipt-note" id="receipt-note"></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const WA_NUMBER = "6287888113452";
+    const START_DATE = new Date("2026-10-26T00:00:00");
+    const SURAT_P1 = 'Gak kerasa udah genap 1 bulan sejak tanggal 26 kemarin kita mulai jalan bareng. Makasih banyak ya Jihan udah hadir dan jadi alasan kenapa hari-hari aku belakangan ini selalu kerasa jauh lebih seru dan bermakna.';
+    const SURAT_P2 = 'Dari awal kenal sampai akhirnya bisa sedekat ini, setiap obrolan receh, perhatian kecil, dan ketawa bareng kamu selalu jadi hal yang paling aku kangenin—persis kayak lagu yang lagi muter di web ini. Makasih udah selalu sabar dan jadi tempat cerita paling nyaman buat aku.';
+    const SURAT_P3 = 'Semoga ke depannya kita makin saling ngerti, makin kompak di tengah kesibukan masing-masing, dan terus nambah banyak cerita baru di bulan-bulan berikutnya. Happy 1st monthversary ya, kesayangan Zikri.';
+
+    const bgm = document.getElementById("bgm");
+    const vinylDisc = document.getElementById("vinyl-disc");
+    const progFill = document.getElementById("prog-fill");
+    const trackTime = document.getElementById("track-time");
+    const trackTitle = document.getElementById("track-title");
+    let isPlaying = false, fallbackSec = 0, secretTaps = 0, claimedVoucher = "Belum dipilih", warmMode = false, scratchRevealed = false;
+    let audioCtx = null, analyser = null, freqData = null, beatSetup = false;
+
+    const lyrics = [
+      [0.0, "♪ Kangen — Intro"],
+      [14.5, "♪ Kutrima suratmu"],
+      [18.2, "♪ T'lah kubaca dan aku mengerti"],
+      [22.0, "♪ Betapa merindunya dirimu"],
+      [25.8, "♪ Akan hadirnya diriku"],
+      [29.5, "♪ Di dalam hari-harimu"],
+      [33.3, "♪ Bersama lagi..."],
+      [41.2, "♪ Kau tanyakan padaku"],
+      [45.0, "♪ Kapan aku akan kembali lagi"],
+      [48.7, "♪ Katamu kau tak kuasa"],
+      [52.3, "♪ Melawan gejolak di dalam dada"],
+      [55.8, "♪ Yang membara menahan rasa"],
+      [59.5, "♪ Pertemuan kita nanti"],
+      [63.3, "♪ Saat bersama dirimu..."],
+      [69.5, "♪ Semua kata rindumu"],
+      [73.2, "♪ Semakin membuatku tak berdaya"],
+      [77.0, "♪ Menahan rasa ingin jumpa"],
+      [80.8, "♪ Percayalah padaku aku pun rindu kamu"],
+      [85.2, "♪ Ku akan pulang"],
+      [88.5, "♪ Melepas semua kerinduan"],
+      [92.0, "♪ Yang terpendam..."],
+      [97.5, "♪ (Musik Interlude)"],
+      [109.0, "♪ Kau tuliskan padaku"],
+      [112.6, "♪ Kata cinta yang manis dalam suratmu"],
+      [116.2, "♪ Kau katakan padaku"],
+      [119.8, "♪ Saat ini kuingin hangat pelukmu"],
+      [123.5, "♪ Dan belai lembut kasihmu"],
+      [127.2, "♪ Takkan kulupa s'lamanya"],
+      [131.0, "♪ Saat kau ada di sisiku..."],
+      [137.0, "♪ Semua kata rindumu"],
+      [140.8, "♪ Semakin membuatku tak berdaya"],
+      [144.5, "♪ Menahan rasa ingin jumpa"],
+      [148.3, "♪ Percayalah padaku aku pun rindu kamu"],
+      [152.5, "♪ Ku akan pulang"],
+      [155.8, "♪ Melepas semua kerinduan"],
+      [159.2, "♪ Yang terpendam..."],
+      [164.5, "♪ Jangan katakan cinta"],
+      [168.2, "♪ Menambah beban rasa"],
+      [171.8, "♪ Sudah simpan saja sedihmu itu"],
+      [175.5, "♪ Ku akan datang..."],
+      [180.0, "♪ (Solo Gitar)"],
+      [218.5, "♪ Semua kata rindumu"],
+      [222.5, "♪ Semakin membuatku tak berdaya"],
+      [226.5, "♪ Menahan rasa ingin jumpa"],
+      [230.3, "♪ Percayalah padaku aku pun rindu kamu"],
+      [234.5, "♪ Ku akan pulang"],
+      [237.8, "♪ Melepas semua kerinduan"],
+      [241.2, "♪ Yang terpendam..."],
+      [246.5, "♪ Semua kata rindumu"],
+      [250.5, "♪ Semakin membuatku tak berdaya"],
+      [254.5, "♪ Menahan rasa ingin jumpa"],
+      [258.3, "♪ Percayalah padaku aku pun rindu kamu"],
+      [262.5, "♪ Ku akan pulang"],
+      [265.8, "♪ Melepas semua kerinduan"],
+      [269.5, "♪ Yang terpendam ♥"],
+      [276.0, "♪ Kangen — Outro ♥"]
+    ];
+
+    function syncLyrics() {
+      const t = bgm.currentTime || fallbackSec;
+      for (let i = lyrics.length - 1; i >= 0; i--) {
+        if (t >= lyrics[i][0]) {
+          if (trackTitle.textContent !== lyrics[i][1]) trackTitle.textContent = lyrics[i][1];
+          break;
+        }
+      }
+    }
+    bgm.addEventListener("timeupdate", syncLyrics);
+
+    function setupBeatReactive() {
+      if (beatSetup) { if (audioCtx && audioCtx.state === "suspended") audioCtx.resume(); return; }
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        audioCtx = new AC();
+        const src = audioCtx.createMediaElementSource(bgm);
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 64;
+        src.connect(analyser);
+        analyser.connect(audioCtx.destination);
+        freqData = new Uint8Array(analyser.frequencyBinCount);
+        beatSetup = true;
+      } catch (e) {}
+    }
+
+    function enterStory() {
+      document.getElementById("curtain").style.display = "none";
+      document.getElementById("main-content").classList.remove("hidden");
+      document.getElementById("vinyl-bar").classList.remove("hidden");
+      setupBeatReactive();
+      setTimeout(initScratchCard, 120);
+      startShootingStars();
+      bgm.volume = 0.7;
+      bgm.play().then(() => { isPlaying = true; }).catch(() => { vinylDisc.classList.add("paused"); });
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(en => { if (en.isIntersecting) en.target.classList.add("show"); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+    }
+
+    function toggleMusic() {
+      setupBeatReactive();
+      if (isPlaying) { bgm.pause(); isPlaying = false; vinylDisc.classList.add("paused"); }
+      else { bgm.play().then(() => { isPlaying = true; vinylDisc.classList.remove("paused"); }).catch(() => {}); }
+    }
+
+    function tapSecret() {
+      secretTaps++;
+      if (secretTaps >= 5) {
+        secretTaps = 0;
+        document.getElementById("secret-modal").classList.remove("hidden");
+        if (navigator.vibrate) navigator.vibrate([40, 30, 80]);
+      }
+    }
+    const reasons = [
+      ["01. Cara kamu cerita", "Setiap kamu cerita tentang hari kamu, selalu ada energi positif yang bikin aku betah dengerin lama-lama."],
+      ["02. Senyum & ketawa kamu", "Hal paling sederhana tapi efeknya langsung bikin capek seharian kerasa hilang."],
+      ["03. Perhatian-perhatian kecil", "Hal-hal simpel kayak ngingetin makan atau nanya kabar selalu kerasa tulus."],
+      ["04. Kesabaran kamu", "Makasih udah selalu sabar ngadepin sifat dan random-nya aku selama sebulan ini."],
+      ["05. Nyambung diajak bahas apa aja", "Dari topik serius sampai hal paling gak penting pun selalu asik kalau sama kamu."],
+      ["06. Vibes kamu yang nenangin", "Dekat sama kamu selalu ngasih rasa nyaman yang susah dijelasin pakai kata-kata."],
+      ["07. Jadi diri sendiri", "Kamu gak pernah pura-pura jadi orang lain, dan itu yang bikin kamu spesial."],
+      ["08. Selalu bikin kangen", "Baru sebentar gak ngobrol aja rasanya udah pengen nyariin lagi."],
+      ["09. Semangat kamu", "Liat kamu jalanin hari-hari selalu bikin aku ikut termotivasi buat jadi lebih baik."],
+      ["10. Kehadiran kamu sendiri", "Intinya, makasih udah ada di sini dan mau jalan bareng aku."]
+    ];
+    const rList = document.getElementById("reasons-list");
+    reasons.forEach(([title, desc]) => {
+      const div = document.createElement("div");
+      div.className = "reason-item";
+      div.innerHTML = `<div class="reason-top"><div>${title}</div><span>Buka ▾</span></div><div class="reason-body">${desc}</div>`;
+      div.onclick = () => {
+        div.classList.toggle("opened");
+        div.querySelector("span").textContent = div.classList.contains("opened") ? "Tutup ▴" : "Buka ▾";
+      };
+      rList.appendChild(div);
+    });
+
+    setInterval(() => {
+      const diff = Math.max(0, new Date() - START_DATE);
+      document.getElementById("d").textContent = Math.floor(diff / 86400000);
+      document.getElementById("h").textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, "0");
+      document.getElementById("m").textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, "0");
+      document.getElementById("s").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+      let cur = 0, dur = 300;
+      if (!isNaN(bgm.duration) && bgm.duration > 0) { cur = bgm.currentTime; dur = bgm.duration; }
+      else if (!document.getElementById("main-content").classList.contains("hidden")) { fallbackSec = Math.min(300, fallbackSec + 1); cur = fallbackSec; }
+      progFill.style.width = `${Math.min(100, (cur / dur) * 100)}%`;
+      trackTime.textContent = `${String(Math.floor(cur / 60)).padStart(2, "0")}:${String(Math.floor(cur % 60)).padStart(2, "0")}`;
+      syncLyrics();
+    }, 1000);
+
+    const ring = document.getElementById("carousel-ring");
+    const stage = document.getElementById("carousel-stage");
+    let rotY = 0, dragging = false, startX = 0, moved = 0;
+    (function spin() { if (!dragging) rotY -= 0.22; ring.style.transform = `rotateY(${rotY}deg)`; requestAnimationFrame(spin); })();
+    stage.addEventListener("pointerdown", e => { dragging = true; startX = e.clientX; moved = 0; });
+    window.addEventListener("pointermove", e => { if (!dragging) return; const dx = e.clientX - startX; moved += Math.abs(dx); rotY += dx * 0.5; startX = e.clientX; });
+    window.addEventListener("pointerup", () => { dragging = false; });
+    function flipCard(el) { if (moved < 10) el.classList.toggle("flipped"); }
+
+    function pickQuiz(btn, id, msg) {
+      btn.parentElement.querySelectorAll(".q-btn").forEach(b => b.classList.remove("picked"));
+      btn.classList.add("picked");
+      const box = document.getElementById(id);
+      box.style.display = "block";
+      box.textContent = "💬 " + msg;
+    }
+
+    function claimVoucher(el, name) {
+      if (claimedVoucher !== "Belum dipilih") return;
+      claimedVoucher = name;
+      const today = new Date().toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
+      document.querySelectorAll(".v-card").forEach(c => {
+        if (c === el) { c.classList.add("claimed"); c.querySelector(".v-stamp").textContent = `✓ CLAIMED • ${today}`; }
+        else { c.classList.add("locked"); }
+      });
+      if (navigator.vibrate) navigator.vibrate([40, 30, 80]);
+      spawnConfetti();
+    }
+    function initScratchCard() {
+      const sc = document.getElementById("scratch-canvas");
+      const wrap = document.getElementById("scratch-wrap");
+      if (!sc || !wrap) return;
+      sc.width = wrap.offsetWidth || 320;
+      sc.height = wrap.offsetHeight || 185;
+      const sctx = sc.getContext("2d");
+      const grad = sctx.createLinearGradient(0, 0, sc.width, sc.height);
+      grad.addColorStop(0, "#be185d"); grad.addColorStop(0.5, "#7e22ce"); grad.addColorStop(1, "#ec4899");
+      sctx.fillStyle = grad;
+      sctx.fillRect(0, 0, sc.width, sc.height);
+      sctx.fillStyle = "rgba(255,255,255,0.92)";
+      sctx.font = "bold 15px system-ui, sans-serif";
+      sctx.textAlign = "center";
+      sctx.fillText("✦ GOSOK KARTU INI ✦", sc.width / 2, sc.height / 2 + 5);
+
+      let scratching = false, strokes = 0;
+      function scratchAt(e) {
+        const rect = sc.getBoundingClientRect();
+        sctx.globalCompositeOperation = "destination-out";
+        sctx.beginPath();
+        sctx.arc(e.clientX - rect.left, e.clientY - rect.top, 22, 0, Math.PI * 2);
+        sctx.fill();
+        strokes++;
+        if (strokes > 48 && !scratchRevealed) {
+          scratchRevealed = true;
+          sc.style.opacity = "0";
+          sc.style.pointerEvents = "none";
+          if (navigator.vibrate) navigator.vibrate([50, 40, 100]);
+          spawnConfetti();
+        }
+      }
+      sc.addEventListener("pointerdown", e => { e.preventDefault(); scratching = true; scratchAt(e); });
+      sc.addEventListener("pointermove", e => { if (scratching) { e.preventDefault(); scratchAt(e); } });
+      window.addEventListener("pointerup", () => { scratching = false; });
+    }
+
+    function typeParagraph(el, text, speed, cb) {
+      let i = 0;
+      const timer = setInterval(() => {
+        el.textContent += text.charAt(i++);
+        if (i >= text.length) { clearInterval(timer); if (cb) cb(); }
+      }, speed);
+    }
+
+    const holdBtn = document.getElementById("hold-btn");
+    const ringFill = document.getElementById("ring-fill");
+    const holdPercent = document.getElementById("hold-percent");
+    const lockStatus = document.getElementById("lock-status");
+    const circ = 2 * Math.PI * 68;
+    ringFill.style.strokeDasharray = `${circ} ${circ}`;
+    ringFill.style.strokeDashoffset = circ;
+    let holding = false, unlocked = false, progress = 0, lastT = 0;
+
+    function unlockNow() {
+      unlocked = true; holding = false; warmMode = true;
+      document.body.classList.add("warm-mode");
+      if (navigator.vibrate) navigator.vibrate([80, 50, 140]);
+      document.getElementById("lock-container").classList.add("hidden");
+      document.getElementById("final-letter").classList.remove("hidden");
+      spawnConfetti();
+      typeParagraph(document.getElementById("type-p1"), SURAT_P1, 24, () => {
+        typeParagraph(document.getElementById("type-p2"), SURAT_P2, 22, () => {
+          typeParagraph(document.getElementById("type-p3"), SURAT_P3, 22);
+        });
+      });
+    }
+
+    function loopHold(t) {
+      if (!lastT) lastT = t;
+      const dt = t - lastT; lastT = t;
+      if (!unlocked) {
+        if (holding) { progress = Math.min(100, progress + (dt / 3000) * 100); if (progress >= 100) { unlockNow(); return; } }
+        else if (progress > 0) { progress = Math.max(0, progress - (dt / 500) * 100); }
+        ringFill.style.strokeDashoffset = circ - (progress / 100) * circ;
+        holdPercent.textContent = progress > 2 ? `${Math.floor(progress)}%` : "TAHAN";
+        requestAnimationFrame(loopHold);
+      }
+    }
+    requestAnimationFrame(loopHold);
+
+    holdBtn.addEventListener("pointerdown", e => { if (unlocked) return; e.preventDefault(); holding = true; holdBtn.classList.add("pressing"); lockStatus.textContent = "Terus tahan sampai 100%..."; });
+    const releaseHold = () => { if (unlocked) return; holding = false; holdBtn.classList.remove("pressing"); if (progress < 100) lockStatus.textContent = "Jangan dilepas dulu, tahan 3 detik ya!"; };
+    holdBtn.addEventListener("pointerup", releaseHold);
+    holdBtn.addEventListener("pointercancel", releaseHold);
+    holdBtn.addEventListener("pointerleave", releaseHold);
+    let kangenCount = 0;
+    const kangenReplies = [
+      "Sinyal kangen diterima! ♥",
+      "Aku di sini juga lagi mikirin kamu kok.",
+      "Wah udah dipencet berkali-kali, langsung chat aku sekarang ya!",
+      "Fix ini mah harus ketemu secepatnya!"
+    ];
+    function tapKangen() {
+      kangenCount++;
+      document.getElementById("kangen-count").textContent = kangenCount;
+      document.getElementById("kangen-msg").textContent = kangenReplies[Math.min(kangenReplies.length - 1, Math.floor((kangenCount - 1) / 3))];
+      if (navigator.vibrate) navigator.vibrate(25);
+      spawnConfetti();
+    }
+
+    let userWish = "";
+    function startShootingStars() {
+      const star = document.getElementById("shooting-star");
+      if (!star) return;
+      const launch = () => {
+        star.style.top = `${14 + Math.random() * 35}%`;
+        star.classList.remove("fly");
+        void star.offsetWidth;
+        star.classList.add("fly");
+      };
+      setTimeout(launch, 4500);
+      setInterval(launch, 14000);
+    }
+    function openWishModal() {
+      document.getElementById("wish-modal").classList.remove("hidden");
+      if (navigator.vibrate) navigator.vibrate([30, 30, 60]);
+    }
+    function saveWish() {
+      const val = document.getElementById("wish-input").value.trim();
+      if (val) userWish = val;
+      document.getElementById("wish-modal").classList.add("hidden");
+      spawnConfetti();
+    }
+
+    function sendToWA() {
+      const note = document.getElementById("wa-note").value.trim() || "Makasih banyak Zikri! ♥";
+      const wishLine = userWish ? `\n🌠 Wish bulan ke-2: "${userWish}"` : "";
+      const text = `Hai Zikri! Aku udah baca web 1st monthversary-nya sampai habis ✨\n\n💬 Pesan aku: "${note}"\n♥ Tap kangen: ${kangenCount}x\n🎟️ Voucher pilihan: ${claimedVoucher}${wishLine}`;
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    function downloadReceipt() {
+      const rc = document.createElement("canvas");
+      rc.width = 720; rc.height = 1020;
+      const r = rc.getContext("2d");
+      const bg = r.createLinearGradient(0, 0, 0, 1020);
+      bg.addColorStop(0, "#1e1035"); bg.addColorStop(1, "#090a14");
+      r.fillStyle = bg; r.fillRect(0, 0, 720, 1020);
+      r.fillStyle = "#fff1f5";
+      r.beginPath(); r.roundRect(48, 48, 624, 924, 28); r.fill();
+      r.fillStyle = "#be185d"; r.font = "bold 18px monospace"; r.textAlign = "center";
+      r.fillText("✦ 1ST MONTHVERSARY OFFICIAL RECEIPT ✦", 360, 115);
+      r.fillStyle = "#111827"; r.font = "bold 36px Georgia, serif";
+      r.fillText("Zikri ♥ Jihan", 360, 168);
+      r.fillStyle = "#6b7280"; r.font = "18px monospace";
+      r.fillText("26 Oktober 2026 — 26 November 2026", 360, 205);
+      r.strokeStyle = "#f472b6"; r.setLineDash([8, 8]); r.lineWidth = 2;
+      r.beginPath(); r.moveTo(85, 238); r.lineTo(635, 238); r.stroke(); r.setLineDash([]);
+      const rows = [
+        ["DURASI BERSAMA", document.getElementById("d").textContent + " Hari"],
+        ["LAGU TEMA", "Kangen — Dewa 19"],
+        ["SINYAL KANGEN", kangenCount + "x Tap ♥"],
+        ["VOUCHER KLAIM", claimedVoucher.slice(0, 24)],
+        ["GOLDEN TICKET", scratchRevealed ? "UNLOCKED ✓" : "BELUM DIGOSOK"]
+      ];
+      let y = 300;
+      rows.forEach(([k, v]) => {
+        r.textAlign = "left"; r.fillStyle = "#4b5563"; r.font = "bold 19px monospace"; r.fillText(k, 88, y);
+        r.textAlign = "right"; r.fillStyle = "#111827"; r.font = "bold 19px monospace"; r.fillText(v, 632, y);
+        y += 58;
+      });
+      r.strokeStyle = "#f472b6"; r.setLineDash([8, 8]);
+      r.beginPath(); r.moveTo(85, y + 10); r.lineTo(635, y + 10); r.stroke(); r.setLineDash([]);
+      r.textAlign = "center"; r.fillStyle = "#831843"; r.font = "italic 22px Georgia, serif";
+      r.fillText("Untuk Jihan kesayangan jikri,", 360, y + 75);
+      r.fillText("halaman pertama dari banyak cerita kita.", 360, y + 110);
+      r.fillStyle = "#1f2937";
+      for (let bx = 160; bx < 560; bx += 8) r.fillRect(bx, 820, (bx % 16 === 0) ? 4 : 2, 65);
+      r.fillStyle = "#6b7280"; r.font = "15px monospace";
+      r.fillText("VERIFIED LOVE RECEIPT • 26-11-2026", 360, 915);
+      const link = document.createElement("a");
+      link.download = "Struk-1Bulan-Zikri-Jihan.png";
+      link.href = rc.toDataURL("image/png");
+      link.click();
+      document.getElementById("receipt-note").textContent = "✓ Struk kenangan berhasil disimpan ke HP!";
+    }
+
+    const canvas = document.getElementById("bg-canvas");
+    const ctx = canvas.getContext("2d");
+    let w, h, stars = [], confs = [], trails = [], lastTrail = 0;
+    function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+    window.addEventListener("resize", resize); resize();
+    for (let i = 0; i < 55; i++) stars.push({ x: Math.random()*w, y: Math.random()*h, r: Math.random()*1.8+0.4, vy: Math.random()*0.35+0.12 });
+
+    function spawnTrail(x, y) {
+      const now = performance.now();
+      if (now - lastTrail < 22) return;
+      lastTrail = now;
+      const chars = ["✦", "♥", "•"];
+      trails.push({ x, y, vx: (Math.random()-0.5)*1.4, vy: -Math.random()*1.4-0.3, alpha: 1, size: Math.random()*8+9, ch: chars[Math.floor(Math.random()*3)] });
+    }
+    window.addEventListener("pointermove", e => spawnTrail(e.clientX, e.clientY), { passive: true });
+    window.addEventListener("pointerdown", e => {
+      for (let i = 0; i < 4; i++) spawnTrail(e.clientX + (Math.random()-0.5)*16, e.clientY + (Math.random()-0.5)*16);
+    }, { passive: true });
+
+    function spawnConfetti() {
+      const colors = ["#f472b6", "#c084fc", "#ffffff", "#fda4af"];
+      for (let i = 0; i < 55; i++) confs.push({ x: w/2, y: h*0.65, vx: (Math.random()-0.5)*11, vy: (Math.random()-0.8)*11, c: colors[i%4], s: Math.random()*5+4 });
+    }
+    (function draw() {
+      ctx.clearRect(0, 0, w, h);
+      stars.forEach(s => {
+        if (warmMode) {
+          ctx.fillStyle = "rgba(251, 113, 133, 0.45)";
+          ctx.font = `${Math.floor(s.r * 7 + 8)}px sans-serif`;
+          ctx.fillText("♥", s.x, s.y);
+        } else {
+          ctx.fillStyle = "rgba(249, 168, 212, 0.55)";
+          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill();
+        }
+        s.y -= s.vy; if (s.y < 0) { s.y = h; s.x = Math.random()*w; }
+      });
+      confs.forEach((c, idx) => { ctx.fillStyle = c.c; ctx.fillRect(c.x, c.y, c.s, c.s); c.x += c.vx; c.y += c.vy; c.vy += 0.25; if (c.y > h) confs.splice(idx, 1); });
+      trails.forEach((tr, idx) => {
+        ctx.fillStyle = `rgba(251, 207, 232, ${tr.alpha})`;
+        ctx.font = `${Math.floor(tr.size)}px sans-serif`;
+        ctx.fillText(tr.ch, tr.x, tr.y);
+        tr.x += tr.vx; tr.y += tr.vy; tr.alpha -= 0.028;
+        if (tr.alpha <= 0) trails.splice(idx, 1);
+      });
+      if (analyser && isPlaying) {
+        analyser.getByteFrequencyData(freqData);
+        let sum = 0;
+        for (let b = 0; b < 10; b++) sum += freqData[b];
+        const bass = sum / (10 * 255);
+        const vBar = document.getElementById("vinyl-bar");
+        const vDisc = document.getElementById("vinyl-disc");
+        if (vBar) vBar.style.boxShadow = `0 8px ${22 + bass * 28}px rgba(244, 114, 182, ${0.25 + bass * 0.55})`;
+        if (vDisc) vDisc.style.boxShadow = `0 0 ${bass * 18}px #f472b6`;
+      }
+      requestAnimationFrame(draw);
+    })();
+
+  </script>
+</body>
+</html>
